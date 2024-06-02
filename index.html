@@ -69,11 +69,21 @@ appIcons.forEach(appIcon => {
 
 const shareButton = document.querySelector('.share-button');
 shareButton.addEventListener('click', () => {
-    navigator.share({
-        title: 'Becker Boutique',
-        text: 'Check out the Becker Boutique app for missionaries!',
-        url: 'https://forms.gle/UQqH6MVgBSs7sUvGA'
-    });
+    if (navigator.share) {
+        navigator.share({
+            title: 'Becker Boutique',
+            text: 'Check out the Becker Boutique app for missionaries!',
+            url: 'https://forms.gle/UQqH6MVgBSs7sUvGA'
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    } else {
+        var alert = new JSAlert('<br>Send this link to your friends', 'Share Becker Boutique Installation');
+        alert.addTextField('https://forms.gle/UQqH6MVgBSs7sUvGA');
+        alert.addButton("Close");
+        alert.show();
+    }
 });
     </script>
 </body>
