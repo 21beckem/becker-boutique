@@ -12,5 +12,27 @@
             "sizes": "512x512",
             "type": "image/png"
         }
+    ],
+    "related_applications" : [
+        {
+            "platform" : "webapp",
+            "id" : "referral-suite",
+            "url" : "../referral-suite/manifest.webmanifest"
+        },
+        {
+            "platform" : "webapp",
+            "id" : "instrument-tuner",
+            "url" : "../instrument-tuner/manifest.webmanifest"
+        },
+        {
+            "platform" : "webapp",
+            "id" : "beckerbeats",
+            "url" : "../beckerbeats/manifest.json"
+        },
+        {
+            "platform" : "webapp",
+            "id" : "saints-radio",
+            "url" : "../saints-radio/manifest.webmanifest"
+        }
     ]
 }

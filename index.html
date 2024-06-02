@@ -34,22 +34,23 @@
             <name>Saints Radio</name>
             <desc>Want to listen to Saints Radio developed by the church? This is the right app for you!<br>This radio is also included as part of the Becker Beats app. This Saints Radio app is ony Saints Radio and nothing else.</desc>
         </div>
-        <div class="app-icon" href="../ssm/install.html">
-            <img src="../ssm/img/ssmLogo.png">
+        <div class="app-icon" href="#">
+            <img src="">
             <name>Conf Reports</name>
             <desc>Want to dive deeper into the Book of Mormon and General Conference? Conf Reports provides tools allowing you to analyse these texts deeper and find what you need faster!</desc>
         </div>
-        <div class="app-icon" href="../quick-share/install.html">
-            <img src="https://imgrs.apkcombo.com/QqH5TFhZ1HtnXgJnlKfNN7U5x950Bvfb0_6PMtePya8/rs:fit:150:0:0/g:sm/Y29tLnNhbXN1bmcuYW5kcm9pZC5hcHAuc2hhcmVsaXZlL2ljb24ucG5n.png">
+        <div class="app-icon" href="">
+            <img src="">
             <name>Quick Share</name>
         	<desc>Missing <i>Nearby Share</i> which our phones used to have? Use this instead! Just as fast and doesn't even need to be nearby.</desc>
         </div>
         <div class="app-icon" href="../mission-streamer/install.html">
-            <img src="https://play-lh.googleusercontent.com/zrlRcV1WjjWWM9TVZS1oxOTCPwlReFC2UhNBNANEDDxFcJh6l59cIz4S66GYoHILzAET">
+            <img src="">
             <name>Mission Streamer</name>
             <desc>Need a place to watch missionary approved content? Mission Streamer is the right app for you!</desc>
         </div>
     </div>
+    <div id="relatedApplications"></div>
     <button class="share-button">Share</button>
     <script>
 const appIcons = document.querySelectorAll('.app-icon');
@@ -61,7 +62,7 @@ appIcons.forEach(appIcon => {
         var alert = new JSAlert(desc, name);
         alert.addButton("Cancel");
         alert.addButton("Install").then(function() {
-            location.href = appIcon.getAttribute('href');
+            window.open(appIcon.getAttribute('href'), '_blank');
         });
         alert.show();
     });
@@ -85,6 +86,12 @@ shareButton.addEventListener('click', () => {
         alert.show();
     }
 });
+
+async function getRelatedApps() {
+    let apps = await navigator.getInstalledRelatedApps();
+    document.getElementById('relatedApplications').innerHTML = apps.length + '<br><br>' + JSON.stringify(apps);
+}
+getRelatedApps();
     </script>
 </body>
 </html>
