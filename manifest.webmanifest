@@ -4,8 +4,8 @@
     "short_name": "Becker Boutique",
     "start_url": "index.html",
     "display": "standalone",
-    "background_color": "#7347B2",
-    "theme_color": "#462c6a",
+    "background_color": "#ffddb0",
+    "theme_color": "#ff9100",
     "icons": [
         {
             "src": "logo.png",
