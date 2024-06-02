@@ -52,20 +52,29 @@
     </div>
     <button class="share-button">Share</button>
     <script>
-        const appIcons = document.querySelectorAll('.app-icon');
-        appIcons.forEach(appIcon => {
-            appIcon.addEventListener('click', () => {
-                const name = appIcon.querySelector('name').textContent;
-                const desc = appIcon.querySelector('desc').textContent;
-                // Create an alert with custom buttons
-                var alert = new JSAlert(desc, name);
-                alert.addButton("Cancel");
-                alert.addButton("Install").then(function() {
-                    location.href = appIcon.getAttribute('href');
-                });
-                alert.show();
-            });
+const appIcons = document.querySelectorAll('.app-icon');
+appIcons.forEach(appIcon => {
+    appIcon.addEventListener('click', () => {
+        const name = appIcon.querySelector('name').textContent;
+        const desc = appIcon.querySelector('desc').textContent;
+        // Create an alert with custom buttons
+        var alert = new JSAlert(desc, name);
+        alert.addButton("Cancel");
+        alert.addButton("Install").then(function() {
+            location.href = appIcon.getAttribute('href');
         });
+        alert.show();
+    });
+});
+
+const shareButton = document.querySelector('.share-button');
+shareButton.addEventListener('click', () => {
+    navigator.share({
+        title: 'Becker Boutique',
+        text: 'Check out the Becker Boutique app for missionaries!',
+        url: 'https://forms.gle/UQqH6MVgBSs7sUvGA'
+    });
+});
     </script>
 </body>
 </html>
