@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Becker Boutique</title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" href="styles.css">
+    <script src="jsalert.js"></script>
+</head>
+<body>
+    <center>
+        <h1 class="app-title">Becker Boutique</h1>
+    </center>
+    <div class="app-drawer">
+        <div class="app-icon" href="../referral-suite/install/installApp.html">
+            <img src="../referral-suite/logo.png">
+            <name>Referral Suite</name>
+            <desc>A clean tool for managing mission media referrals in teams.</desc>
+        </div>
+        <div class="app-icon" href="../instrument-tuner/install.html">
+            <img src="../instrument-tuner/logo.png">
+            <name>Instrument Tuner</name>
+            <desc>Ever needed to tune an instrument and don't want to buy a tuner? Turn your phone into a tuner with this app!</desc>
+        </div>
+        <div class="app-icon" href="../beckerbeats/install.html">
+            <img src="../beckerbeats/assets/img/beckerBeatsLogo.jpg">
+            <name>Becker Beats</name>
+            <desc>An app for studying. Here you can find the Mormons Bok audiobook in Swedish, study music and sounds, and the Saints Radio made by the church.</desc>
+        </div>
+        <div class="app-icon" href="../saints-radio/install.html">
+            <img src="../saints-radio/logo.png">
+            <name>Saints Radio</name>
+            <desc>Want to listen to Saints Radio developed by the church? This is the right app for you!<br>This radio is also included as part of the Becker Beats app. This Saints Radio app is ony Saints Radio and nothing else.</desc>
+        </div>
+        <div class="app-icon" href="../ssm/install.html">
+            <img src="../ssm/img/ssmLogo.png">
+            <name>Conf Reports</name>
+            <desc>Want to dive deeper into the Book of Mormon and General Conference? Conf Reports provides tools allowing you to analyse these texts deeper and find what you need faster!</desc>
+        </div>
+        <div class="app-icon" href="../quick-share/install.html">
+            <img src="https://imgrs.apkcombo.com/QqH5TFhZ1HtnXgJnlKfNN7U5x950Bvfb0_6PMtePya8/rs:fit:150:0:0/g:sm/Y29tLnNhbXN1bmcuYW5kcm9pZC5hcHAuc2hhcmVsaXZlL2ljb24ucG5n.png">
+            <name>Quick Share</name>
+        	<desc>Missing <i>Nearby Share</i> which our phones used to have? Use this instead! Just as fast and doesn't even need to be nearby.</desc>
+        </div>
+        <div class="app-icon" href="../mission-streamer/install.html">
+            <img src="https://play-lh.googleusercontent.com/zrlRcV1WjjWWM9TVZS1oxOTCPwlReFC2UhNBNANEDDxFcJh6l59cIz4S66GYoHILzAET">
+            <name>Mission Streamer</name>
+            <desc>Need a place to watch missionary approved content? Mission Streamer is the right app for you!</desc>
+        </div>
+    </div>
+    <button class="share-button">Share</button>
+    <script>
+        const appIcons = document.querySelectorAll('.app-icon');
+        appIcons.forEach(appIcon => {
+            appIcon.addEventListener('click', () => {
+                const name = appIcon.querySelector('name').textContent;
+                const desc = appIcon.querySelector('desc').textContent;
+                // Create an alert with custom buttons
+                var alert = new JSAlert(desc, name);
+                alert.addButton("Cancel");
+                alert.addButton("Install").then(function() {
+                    location.href = appIcon.getAttribute('href');
+                });
+                alert.show();
+            });
+        });
+    </script>
+</body>
+</html>

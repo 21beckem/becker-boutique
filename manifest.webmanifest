@@ -1,0 +1,16 @@
+{
+    "description": "Manage Social-Media Referrals",
+    "name": "Becker Boutique",
+    "short_name": "Becker Boutique",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#7347B2",
+    "theme_color": "#462c6a",
+    "icons": [
+        {
+            "src": "logo.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
