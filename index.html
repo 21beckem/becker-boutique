@@ -8,8 +8,69 @@
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="stylesheet" href="styles.css">
     <script src="jsalert.js"></script>
+    <style>
+.splash-screen {
+    position: fixed;
+    z-index: 9999999999;
+    top: -100px;
+    left: -100px;
+    width: calc(100% + 200px);
+    height: calc(100% + 200px);
+    background-color: #ffddb0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transform: scale(1);
+    animation: splashAnimWhole 0.6s 1.8s ease forwards;
+}
+.splash-screen img {
+    z-index: 2;
+    width: 240px;
+    height: auto;
+    transform: translateY(0px);
+    border-radius: 0px;
+    box-shadow: 0 2px 5px 0 transparent;
+    animation: splashAnimImg 0.4s 0.6s ease forwards;
+}
+.splash-screen credit {
+    z-index: 1;
+    color: white;
+    position: absolute;
+    width: 240px;
+    font-size: 30px;
+    text-align: center;
+    transform: translateY(0px);
+    animation: splashAnimDev 0.6s 0.4s ease forwards;
+}
+@keyframes splashAnimWhole {
+    0% { opacity: 1; transform: scale(1); }
+    99.999% { opacity: 0; transform: scale(1.5); pointer-events: auto; }
+    100% { opacity: 0; transform: scale(1.5); pointer-events: none; }
+}
+@keyframes splashAnimImg {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-20px); border-radius: 50px; box-shadow: 0 2px 20px -10px rgb(0 0 0 / 16%); }
+}
+@keyframes splashAnimDev {
+    0% { opacity: 0; transform: translateY(0px); }
+    100% { opacity: 0.7; transform: translateY(140px); }
+}
+    </style>
 </head>
 <body>
+    <script>
+let firstTime = sessionStorage.getItem("first_time");
+if (!firstTime) {
+    sessionStorage.setItem("first_time","1");
+    document.write(`
+        <div class="splash-screen">
+        <credit id="dev-er"><span style="font-size:20px">Developed By:</span><br>Michael Becker</credit>
+        <img src="logo.png" alt="App Icon">
+        </div>
+    `);
+}
+    </script>
     <center>
         <h1 class="app-title">Becker Boutique</h1>
     </center>
@@ -44,13 +105,12 @@
             <name>Quick Share</name>
         	<desc>Missing <i>Nearby Share</i> which our phones used to have? Use this instead! Just as fast and doesn't even need to be nearby.</desc>
         </div>
-        <div class="app-icon" href="../mission-streamer/install.html">
+        <!-- <div class="app-icon" href="../mission-streamer/install.html">
             <img src="">
             <name>Mission Streamer</name>
             <desc>Need a place to watch missionary approved content? Mission Streamer is the right app for you!</desc>
-        </div>
+        </div> -->
     </div>
-    <div id="relatedApplications"></div>
     <button class="share-button">Share</button>
     <script>
 const appIcons = document.querySelectorAll('.app-icon');
@@ -86,12 +146,6 @@ shareButton.addEventListener('click', () => {
         alert.show();
     }
 });
-
-async function getRelatedApps() {
-    let apps = await navigator.getInstalledRelatedApps();
-    document.getElementById('relatedApplications').innerHTML = apps.length + '<br><br>' + JSON.stringify(apps);
-}
-getRelatedApps();
     </script>
 </body>
 </html>
