@@ -64,13 +64,14 @@ function isPwa() {
         (displayMode) => window.matchMedia('(display-mode: ' + displayMode + ')').matches
     );
 }
-if (isPwa()) {
-    location.href = "index.html";
-}
 function _(x) { return document.getElementById(x); }
 async function autoFill() {
     let res = await fetch( document.querySelector('link[rel=manifest]').getAttribute('href') );
     let manifest = await res.json();
+
+    if (isPwa()) {
+        location.href = manifest.start_url;
+    }
 
     _('appName').innerHTML = manifest.name;
     if (manifest.display === 'standalone') {
