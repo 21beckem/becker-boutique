@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Becker Boutique Installer</title>
+    <title>Installer</title>
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="manifest" href="manifest.webmanifest">
     <meta name="theme-color" content="default">
@@ -78,6 +78,7 @@ async function autoFill() {
     } else {
         _('installInsctructions').innerHTML = 'Then click Add to Home Screen!';
     }
+    document.title = manifest.name + ' Installer';
     document.querySelector('meta[name=theme-color]').content = manifest.theme_color || 'default';
     document.documentElement.style.setProperty('--background-color', manifest.background_color || 'gray');
     _('logoImg').src = manifest.icons[0].src;
