@@ -26,6 +26,11 @@ body {
     height: 100px;
     cursor: pointer;
 }
+.app-icon.disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
 
 .app-icon img {
     width: 50px;

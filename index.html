@@ -100,7 +100,7 @@ if (!firstTime) {
             <name>Nearby Share</name>
             <desc>Missing <i>Nearby Share</i> which our phones used to have? Use this instead!</desc>
         </div>
-        <div class="app-icon" href="">
+        <div class="app-icon disabled" href="">
             <img src="COMING_SOON.png">
             <name>Conf Reports</name>
             <desc>Want to dive deeper into the Book of Mormon and General Conference? Conf Reports provides tools allowing you to analyse these texts deeper and find what you need faster!</desc>
@@ -121,9 +121,11 @@ appIcons.forEach(appIcon => {
         // Create an alert with custom buttons
         var alert = new JSAlert(desc, name);
         alert.addButton("Cancel");
-        alert.addButton("Install").then(function() {
-            window.open(appIcon.getAttribute('href'), '_blank');
-        });
+        if (!appIcon.classList.contains('disabled')) {
+            alert.addButton("Install").then(function() {
+                window.open(appIcon.getAttribute('href'), '_blank');
+            });
+        }
         alert.show();
     });
 });
